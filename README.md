@@ -36,6 +36,8 @@ all_spam_names_ns = db.distinct_nameservers_ips_by_name(all_spam_names)
 # Find all the domains served by these name servers
 maybe_more_spam = db.distinct_names_by_nameserver_ip(all_spam_names_ns)
 ```
+# Does this list of domains include domains used by malware?
+is_malware = db.include_malware?(['wh4u6igxiglekn.su', 'excue.ru'])
 
 Getting started
 ---------------
