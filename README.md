@@ -37,6 +37,9 @@ ips = db.distinct_ips_by_name(spam_names)
 
 # Discover new domains mapping to the IP addresses we just found
 all_spam_names = db.distinct_names_by_ip(ips)
+
+# Find all the name servers used by these new domains
+all_spam_names_ns = db.distinct_nameservers_ips_by_name(all_spam_names)
 ```
 
 Getting started
