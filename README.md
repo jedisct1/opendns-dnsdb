@@ -12,7 +12,7 @@ building classifiers and reputation systems.
 Installation
 ------------
 
-    rake install
+    bundle && rake install
 
 Example
 -------
