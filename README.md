@@ -42,8 +42,10 @@ all_spam_names = db.distinct_names_by_ip(ips)
 Getting started
 ---------------
 
-    require 'opendns-dnsdb'
-    db = OpenDNS::DNSDB.new(sslcert: 'client.p12', sslcertpasswd: 'opendns')
+```ruby
+require 'opendns-dnsdb'
+db = OpenDNS::DNSDB.new(sslcert: 'client.p12', sslcertpasswd: 'opendns')
+```
 
 Supported options:
 - `timeout`: timeout for each query, in seconds (default: 15 seconds)
