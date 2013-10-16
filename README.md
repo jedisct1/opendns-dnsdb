@@ -25,7 +25,7 @@ run:
 Example
 -------
 
-```
+```ruby
 # Setup
 db = OpenDNS::DNSDB.new(sslcert: 'client.p12', sslcertpasswd: 'opendns')
 
