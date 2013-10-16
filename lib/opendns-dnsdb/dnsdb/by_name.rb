@@ -4,7 +4,7 @@ require_relative 'rrutils'
 module OpenDNS
   class DNSDB
     module ByName
-      include OpenDNS::RRUtils
+      include OpenDNS::DNSDB::RRUtils
       
       def rr_only_for_names(responses)
         responses_is_hash = responses.kind_of?(Hash)
