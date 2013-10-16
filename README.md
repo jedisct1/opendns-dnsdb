@@ -3,11 +3,11 @@ OpenDNS-DNSDB-Ruby
 
 Ruby client library for the OpenDNS DNS database ("Security Graph").
 
-The OpenDNS DNS database is similar to a passive DNS database, keeping
-track of all the DNS records observed over a 90 days period.
+The OpenDNS DNS database keeps track of DNS records observed by
+OpenDNS public resolvers over a 90 days period.
 
 It also computes extra features based on these log files, suitable for
-building classifiers.
+building classifiers and reputation systems.
 
 Installation
 ------------
