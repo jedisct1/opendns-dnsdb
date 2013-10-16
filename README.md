@@ -36,8 +36,14 @@ all_spam_names_ns = db.distinct_nameservers_ips_by_name(all_spam_names)
 # Find all the domains served by these name servers
 maybe_more_spam = db.distinct_names_by_nameserver_ip(all_spam_names_ns)
 
+# Return the subset of names not flagged as malware by OpenDNS yet
+uncategorized = db.not_suspicious_names(maybe_more_spam)
+
 # Does this list of domains include domains used by malware?
-is_malware = db.include_malware?(['wh4u6igxiglekn.su', 'excue.ru'])
+is_malware = db.include_suspicious?(['wh4u6igxiglekn.su', 'excue.ru'])
+
+# Specifically, is excue.ru suspicious?
+is_benign = db.is_suspicious?('excue.ru')
 ```
 
 Getting started
