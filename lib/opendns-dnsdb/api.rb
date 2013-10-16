@@ -4,6 +4,9 @@ require 'ethon'
 require 'hashie'
 require 'multi_json'
 
+require_relative 'dnsdb/by_ip'
+require_relative 'dnsdb/by_name'
+
 module OpenDNS
   class Response < Hashie::Mash
     def initialize(source_hash = nil, default = nil, &blk)
@@ -20,6 +23,9 @@ module OpenDNS
   end
 
   class DNSDB
+    include OpenDNS::DNSDB::ByIP
+    include OpenDNS::DNSDB::ByName    
+    
     DEFAULT_TIMEOUT = 15
     DEFAULT_MAXCONNECTS = 10
     SGRAPH_API_BASE_URL = 'https://sgraph.umbrella.com'
