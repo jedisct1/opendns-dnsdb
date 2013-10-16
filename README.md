@@ -295,7 +295,7 @@ Getting the list of names served by a name server
 This returns the list of names that have been served by an
 authoritative name server:
 
-    db.nameservers_by_ip('199.185.137.3')
+    db.names_by_nameserver_ip('199.185.137.3')
 
 Returns an `Array`:
 ```
@@ -344,7 +344,7 @@ Getting the list of names that a set of name servers have been serving
 This returns the list of names that have been served by a set of name
 servers:
 
-    db.nameservers_by_ip(['199.185.137.3', '65.19.167.109'])
+    db.names_by_nameserver_ip(['199.185.137.3', '65.19.167.109'])
 
 Returns a `Hash`:
 ```
@@ -398,7 +398,7 @@ Getting the list of unique names served by a set of name servers
 
 This returns an `Array` of unique names served by a set of name servers:
 
-    db.distinct_nameservers_by_ip(['199.185.137.3', '65.19.167.109'])
+    db.distinct_names_by_nameserver_ip(['199.185.137.3', '65.19.167.109'])
 
 Returns am `Array`:
 ```
