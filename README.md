@@ -14,14 +14,6 @@ Installation
 
     rake install
 
-Running RSpec tests
--------------------
-
-In order to run the tests, save a certificate as `/tmp/client.p12` and
-run:
-
-    rake rspec
-
 Example
 -------
 
