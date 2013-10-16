@@ -519,7 +519,7 @@ Domain names can be either benign (part of a whitelist), suspicious
 This method returns the labels for a set of domains, which can be either
 `:suspicious`, `:benign` or `:unknown`.
 
-    db.label_by_name(['github.com', 'skyrock.com'])
+    db.labels_by_name(['github.com', 'skyrock.com'])
 
 The labels for up to 42,000 domains can be queried at once.
 
@@ -569,4 +569,28 @@ Testing whether a domain is benign
 Returns `true` or `false`:
 ```
 true
+```
+
+Extracting the subset of suspicious names
+-----------------------------------------
+
+Given a set of names, return a subset of names flagged as suspicious:
+
+    db.suspicious_names(['github.com', 'excue.ru'])
+
+Returns an `Array`:
+```
+['excue.ru']
+```
+
+Extracting the subset of names not flagged as suspicious
+--------------------------------------------------------
+
+Given a set of names, return a subset of names not flagged as suspicious:
+
+    db.suspicious_names(['github.com', 'excue.ru'])
+
+Returns an `Array`:
+```
+['github.com']
 ```

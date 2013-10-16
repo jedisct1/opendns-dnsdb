@@ -11,7 +11,7 @@ module OpenDNS
         labels.values.flatten.uniq
       end     
       
-      def label_by_name(names)
+      def labels_by_name(names)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
         multi = Ethon::Multi.new
@@ -31,7 +31,7 @@ module OpenDNS
       end
       
       def distinct_labels_by_name(names)
-        distinct_labels(label_by_name(names))
+        distinct_labels(labels_by_name(names))
       end
       
       def include_suspicious?(names)
@@ -48,7 +48,27 @@ module OpenDNS
       
       def is_benign?(name)
         include_benign?(name)
+      end
+      
+      def include_unknown?(names)
+        distinct_labels_by_name(names).include?(:unknown)
+      end
+      
+      def is_unknown?(name)
+        include_unknown?(name)
+      end
+      
+      def suspicious_domains(names)
+        labels = labels_by_name(names)
+        labels = [ labels ] unless labels.kind_of?(Enumerable)
+        labels.select { |name, label| label == :suspicious }
+      end
+      
+      def not_suspicious_domains(names)
+        labels = labels_by_name(names)
+        labels = [ labels ] unless labels.kind_of?(Enumerable)
+        labels.select { |name, label| label != :suspicious }
       end      
-    end    
+    end
   end
 end
