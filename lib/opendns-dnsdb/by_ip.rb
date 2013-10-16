@@ -39,16 +39,16 @@ module OpenDNS
       responses
     end
 
-    def nameservers_history_by_ip(ips)
+    def names_history_by_nameserver_ip(ips)
       history_by_ip(ips, 'ns')
     end
 
-    def nameservers_by_ip(ips)
-      rr_only_for_ips(nameservers_history_by_ip(ips))
+    def names_by_nameserver_ip(ips)
+      rr_only_for_ips(names_history_by_nameserver_ip(ips))
     end
 
-    def distinct_nameservers_by_ip(ips)
-      distinct_rrs(nameservers_by_ip(ips))
+    def distinct_names_by_nameserver_ip(ips)
+      distinct_rrs(names_by_nameserver_ip(ips))
     end
 
     def names_history_by_ip(ips)
