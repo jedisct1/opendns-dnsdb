@@ -289,10 +289,11 @@ Returns an `Array`:
 ]
 ```
 
-Getting the list of name servers that an IP has been serving
-------------------------------------------------------------
+Getting the list of names served by a name server
+-------------------------------------------------
 
-This returns the list of name servers that have been resovling to an IP:
+This returns the list of names that have been served by an
+authoritative name server:
 
     db.nameservers_by_ip('199.185.137.3')
 
@@ -337,11 +338,11 @@ Returns an `Array`:
 ]
 ```
 
-Getting the list of name servers that a set of IPs have been serving
---------------------------------------------------------------------
+Getting the list of names that a set of name servers have been serving
+----------------------------------------------------------------------
 
-This returns the list of name servers that have been resolving to a
-set of IPs:
+This returns the list of names that have been served by a set of name
+servers:
 
     db.nameservers_by_ip(['199.185.137.3', '65.19.167.109'])
 
@@ -391,11 +392,11 @@ Returns a `Hash`:
     ]
 }
 ```
-Getting the list of unique name servers for a set of IPs
---------------------------------------------------------
 
-This returns an `Array` of unique name servers that have been resolving to a
-set of IPs:
+Getting the list of unique names served by a set of name servers
+----------------------------------------------------------------
+
+This returns an `Array` of unique names served by a set of name servers:
 
     db.distinct_nameservers_by_ip(['199.185.137.3', '65.19.167.109'])
 
