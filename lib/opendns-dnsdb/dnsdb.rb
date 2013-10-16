@@ -6,6 +6,7 @@ require 'multi_json'
 
 require_relative 'dnsdb/by_ip'
 require_relative 'dnsdb/by_name'
+require_relative 'dnsdb/label'
 
 module OpenDNS
   class Response < Hashie::Mash
@@ -24,7 +25,8 @@ module OpenDNS
 
   class DNSDB
     include OpenDNS::DNSDB::ByIP
-    include OpenDNS::DNSDB::ByName    
+    include OpenDNS::DNSDB::ByName
+    include OpenDNS::DNSDB::Label
     
     DEFAULT_TIMEOUT = 15
     DEFAULT_MAXCONNECTS = 10
@@ -54,9 +56,11 @@ module OpenDNS
       }
     end
 
-    def query_handler(endpoint)
+    def query_handler(endpoint, method = :get, options = { })
       url = SGRAPH_API_BASE_URL + endpoint
-      Ethon::Easy.new(@options.merge(url: url))
+      query = Ethon::Easy.new(@options)
+      query.http_request(url, method, options)
+      query
     end
   end
 end
