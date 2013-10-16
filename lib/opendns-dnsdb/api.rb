@@ -7,11 +7,13 @@ require 'multi_json'
 module OpenDNS
   class Response < Hashie::Mash
     def initialize(source_hash = nil, default = nil, &blk)
-      if source_hash[:first_seen]
-        source_hash[:first_seen] = Date.parse(source_hash[:first_seen])
-      end
-      if source_hash[:last_seen]
-        source_hash[:last_seen] = Date.parse(source_hash[:last_seen])
+      if source_hash
+        if source_hash[:first_seen]
+          source_hash[:first_seen] = Date.parse(source_hash[:first_seen])
+        end
+        if source_hash[:last_seen]
+          source_hash[:last_seen] = Date.parse(source_hash[:last_seen])
+        end
       end
       super(source_hash, default, &blk)
     end
