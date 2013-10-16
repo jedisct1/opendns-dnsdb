@@ -7,7 +7,7 @@ module OpenDNS
       CACHE_KEY = 'Umbrella/OpenDNS'      
 
       def distinct_labels(labels)
-        return labels unless labels.kind_of?(Hash)
+        return [ labels ] unless labels.kind_of?(Hash)
         labels.values.flatten.uniq
       end     
       
@@ -37,6 +37,18 @@ module OpenDNS
       def include_suspicious?(names)
         distinct_labels_by_name(names).include?(:suspicious)
       end
+      
+      def is_suspicious?(name)
+        include_suspicious?(name)
+      end
+      
+      def include_benign?(names)
+        distinct_labels_by_name(names).include?(:benign)
+      end
+      
+      def is_benign?(name)
+        include_benign?(name)
+      end      
     end    
   end
 end
