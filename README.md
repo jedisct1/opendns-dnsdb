@@ -12,7 +12,7 @@ building classifiers and reputation systems.
 Documentation
 -------------
 
-[Click here to read the full documentation of the OpenDNS DNSDB library](http://opendns-dnsdb-client-for-ruby.readthedocs.org/en/latest/)
+[Click here to read the full documentation of the OpenDNS DNSDB library](http://opendns-dnsdb-client-for-ruby.readthedocs.org/en/latest/).
 
 Example
 -------
