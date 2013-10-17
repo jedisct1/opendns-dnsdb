@@ -61,37 +61,37 @@ module OpenDNS
       def suspicious_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label == :suspicious }
+        labels.select { |name, label| label == :suspicious }.keys
       end
       
       def not_suspicious_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label != :suspicious }
+        labels.select { |name, label| label != :suspicious }.keys
       end
       
       def unknown_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label == :unknown }
+        labels.select { |name, label| label == :unknown }.keys
       end
       
       def not_unknown_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label != :unknown }
+        labels.select { |name, label| label != :unknown }.keys
       end
       
       def benign_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label == :benign }
+        labels.select { |name, label| label == :benign }.keys
       end
       
       def not_benign_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label != :benign }
+        labels.select { |name, label| label != :benign }.keys
       end            
     end
   end
