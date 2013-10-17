@@ -8,7 +8,7 @@ module OpenDNS
 
       def distinct_labels(labels)
         return [ labels ] unless labels.kind_of?(Hash)
-        labels.values.flatten.uniq
+        Response::Distinct.new(labels.values.flatten.uniq)
       end     
       
       def labels_by_name(names)
@@ -26,6 +26,7 @@ module OpenDNS
         responses.each_pair do |name, label|
           responses[name] = [:suspicious, :unknown, :benign][label + 1]
         end
+        responses = Response::HashByName[responses]
         responses = responses.values.first unless names_is_array
         responses
       end
@@ -61,37 +62,43 @@ module OpenDNS
       def suspicious_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label == :suspicious }.keys
+        names = labels.select { |name, label| label == :suspicious }.keys
+        Response::Distinct.new(names)
       end
       
       def not_suspicious_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label != :suspicious }.keys
+        names = labels.select { |name, label| label != :suspicious }.keys
+        Response::Distinct.new(names)
       end
       
       def unknown_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label == :unknown }.keys
+        names = labels.select { |name, label| label == :unknown }.keys        
+        Response::Distinct.new(names)
       end
       
       def not_unknown_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label != :unknown }.keys
+        names = labels.select { |name, label| label != :unknown }.keys
+        Response::Distinct.new(names)
       end
       
       def benign_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label == :benign }.keys
+        names = labels.select { |name, label| label == :benign }.keys
+        Response::Distinct.new(names)
       end
       
       def not_benign_domains(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
-        labels.select { |name, label| label != :benign }.keys
+        names = labels.select { |name, label| label != :benign }.keys
+        Response::Distinct.new(names)
       end            
     end
   end

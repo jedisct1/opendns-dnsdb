@@ -36,6 +36,7 @@ module OpenDNS
           obj = MultiJson.load(query.response_body)
           responses[ip] = Response::Raw.new(obj).rrs
         end
+        responses = Response::HashByIP[responses]
         responses = responses.values.first unless ips_is_array
         responses
       end

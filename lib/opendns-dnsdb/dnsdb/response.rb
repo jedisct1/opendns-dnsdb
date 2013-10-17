@@ -15,6 +15,15 @@ module OpenDNS
           super(source_hash, default, &blk)
         end
       end
+      
+      class HashByName < Hash
+      end
+      
+      class HashByIP < Hash
+      end
+      
+      class Distinct < Array
+      end      
     end
   end
 end

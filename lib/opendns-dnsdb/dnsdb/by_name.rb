@@ -36,6 +36,7 @@ module OpenDNS
           obj = MultiJson.load(query.response_body)
           responses[name] = Response::Raw.new(obj).rrs_tf
         end
+        responses = Response::HashByName[responses]
         responses = responses.values.first unless names_is_array
         responses
       end
@@ -49,7 +50,7 @@ module OpenDNS
       end
       
       def distinct_nameservers_ips_by_name(names)
-        distinct_rrs(nameservers_ips_by_name(names))
+        Response::Distinct.new(distinct_rrs(nameservers_ips_by_name(names)))
       end
       
       def ips_history_by_name(names)
