@@ -7,7 +7,7 @@ Getting the list of names served by a name server
 | This returns the list of names that have been served by an
 | authoritative name server:
 
-::
+.. code-block:: ruby
 
     db.names_by_nameserver_ip('199.185.137.3')
 
@@ -59,7 +59,7 @@ Getting the list of names that a set of name servers have been serving
 | This returns the list of names that have been served by a set of name
 | servers:
 
-::
+.. code-block:: ruby
 
     db.names_by_nameserver_ip(['199.185.137.3', '65.19.167.109'])
 
@@ -117,7 +117,7 @@ Getting the list of unique names served by a set of name servers
 This returns an ``Array`` of unique names served by a set of name
 servers:
 
-::
+.. code-block:: ruby
 
     db.distinct_names_by_nameserver_ip(['199.185.137.3', '65.19.167.109'])
 
@@ -171,7 +171,7 @@ Getting the list of all names that resolved to an IP
 | This returns all the names that an IP has been seen for, for the past
 | 3 months:
 
-::
+.. code-block:: ruby
 
     db.names_by_ip('192.30.252.131')
 
@@ -190,7 +190,7 @@ Getting the list of all names that resolved to a set of IPs
 | A bulk operation to retrieve the list of names having mapped to a set
 | of IPs:
 
-::
+.. code-block:: ruby
 
     db.names_by_ip(['192.30.252.131', '199.233.90.68'])
 
@@ -214,7 +214,7 @@ Getting the list of unique names for a set of IPs
 | This method returns a list of distinct names seen for a set of IP
 | addresses:
 
-::
+.. code-block:: ruby
 
     db.distinct_names_by_ip(['192.30.252.131', '199.233.90.68'])
 

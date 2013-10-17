@@ -10,7 +10,7 @@ Getting the label for a domain
 | This method returns the label for a given domain, which can be either
 | ``:suspicious``, ``:bad`` or ``:unknown``.
 
-::
+.. code-block:: ruby
 
     db.label_by_name('github.com')
 
@@ -29,7 +29,7 @@ Getting the labels for a set of domains
 | This method returns the labels for a set of domains, which can be either
 | ``:suspicious``, ``:benign`` or ``:unknown``.
 
-::
+.. code-block:: ruby
 
     db.labels_by_name(['github.com', 'skyrock.com'])
 
@@ -47,7 +47,7 @@ Returns a ``Hash``:
 Testing whether a set of domains contains suspicious domains
 ------------------------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.include_suspicious?(['github.com', 'skyrock.com'])
 
@@ -60,7 +60,7 @@ Returns ``true`` or ``false``:
 Testing whether a set of domains contains benign domains
 --------------------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.include_benign?(['github.com', 'skyrock.com'])
 
@@ -73,7 +73,7 @@ Returns ``true`` or ``false``:
 Testing whether a domain is suspicious
 --------------------------------------
 
-::
+.. code-block:: ruby
 
     db.is_suspicious?('github.com')
 
@@ -86,7 +86,7 @@ Returns ``true`` or ``false``:
 Testing whether a domain is benign
 ----------------------------------
 
-::
+.. code-block:: ruby
 
     db.is_benign?('github.com')
 
@@ -101,7 +101,7 @@ Extracting the subset of suspicious names
 
 Given a set of names, return a subset of names flagged as suspicious:
 
-::
+.. code-block:: ruby
 
     db.suspicious_names(['github.com', 'excue.ru'])
 
@@ -117,7 +117,7 @@ Extracting the subset of names not flagged as suspicious
 Given a set of names, return a subset of names not flagged as
 suspicious:
 
-::
+.. code-block:: ruby
 
     db.suspicious_names(['github.com', 'excue.ru'])
 

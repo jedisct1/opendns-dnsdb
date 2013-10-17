@@ -4,7 +4,7 @@ Getting informations out of a name
 Getting the nameserver IP addresses for a name
 ----------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.nameservers_ips_by_name('github.com')
 
@@ -23,7 +23,7 @@ Getting the nameserver IP addresses for a name
 Getting the nameserver IPs for a set of names
 ---------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.nameservers_ips_by_name(['github.com', 'github.io'])
 
@@ -53,7 +53,7 @@ Getting a list of distinct name servers for a set of names
 | for a set of domain names over the past 3 months.
 | This can be achieved as follows:
 
-::
+.. code-block:: ruby
 
     db.distinct_nameservers_ips_by_name(['github.com', 'github.io'])
 
@@ -78,7 +78,7 @@ Getting the list of IP addresses for a name
 | This returns the list of IP addresses seen over the past 3 months for
 | a name:
 
-::
+.. code-block:: ruby
 
     db.ips_by_name('github.com')
 
@@ -100,7 +100,7 @@ Getting the list of IP addresses for a set of names
 
 Bulk lookups can be achieved by providing a list instead of a string:
 
-::
+.. code-block:: ruby
 
     db.ips_by_name(['github.com', 'github.io'])
 
@@ -125,7 +125,7 @@ Returns a ``Hash``:
 Getting the list of unique IP addresses for a set of names
 ----------------------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.distinct_ips_by_name(['github.com', 'github.io'])
 
@@ -146,7 +146,7 @@ Returns an ``Array``:
 Getting the list of mail exchangers for a name
 ----------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.mxs_by_name('github.com')
 
@@ -165,7 +165,7 @@ Returns an ``Array``:
 Getting the list of mail exchangers for a set of names
 ------------------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.mxs_by_name(['github.com', 'github.io'])
 
@@ -187,7 +187,7 @@ Returns a ``Hash``:
 Getting the list of unique mail exchangers for a set of names
 -------------------------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.distinct_mxs_by_name(['github.com', 'github.io'])
 
@@ -206,7 +206,7 @@ Returns an ``Array`` of unique mail exchangers:
 Getting the list of CNAMEs for a name
 -------------------------------------
 
-::
+.. code-block:: ruby
 
     db.cnames_by_name('www.skyrock.com')
 
@@ -222,7 +222,7 @@ Getting the list of CNAMEs for a name
 Getting the list of CNAMEs for a set of names
 ---------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.cnames_by_name(['www.skyrock.com', 'www.apple.com'])
 
@@ -242,7 +242,7 @@ Returns a ``Hash``:
 Getting the list of unique CNAMEs seen for a list of names
 ----------------------------------------------------------
 
-::
+.. code-block:: ruby
 
     db.distinct_cnames_by_name(['www.skyrock.com', 'www.apple.com'])
 
