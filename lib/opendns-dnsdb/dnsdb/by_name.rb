@@ -34,7 +34,7 @@ module OpenDNS
         responses = { }
         queries.each_pair do |name, query|
           obj = MultiJson.load(query.response_body)
-          responses[name] = Response.new(obj).rrs_tf
+          responses[name] = Response::Raw.new(obj).rrs_tf
         end
         responses = responses.values.first unless names_is_array
         responses

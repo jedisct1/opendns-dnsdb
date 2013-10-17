@@ -34,7 +34,7 @@ module OpenDNS
         responses = { }
         queries.each_pair do |ip, query|
           obj = MultiJson.load(query.response_body)
-          responses[ip] = Response.new(obj).rrs
+          responses[ip] = Response::Raw.new(obj).rrs
         end
         responses = responses.values.first unless ips_is_array
         responses

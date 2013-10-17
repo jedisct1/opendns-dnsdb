@@ -4,26 +4,14 @@ require 'ethon'
 require 'hashie'
 require 'multi_json'
 
+require_relative 'dnsdb/response'
 require_relative 'dnsdb/by_ip'
 require_relative 'dnsdb/by_name'
 require_relative 'dnsdb/label'
 
 module OpenDNS
-  class Response < Hashie::Mash
-    def initialize(source_hash = nil, default = nil, &blk)
-      if source_hash
-        if source_hash[:first_seen]
-          source_hash[:first_seen] = Date.parse(source_hash[:first_seen])
-        end
-        if source_hash[:last_seen]
-          source_hash[:last_seen] = Date.parse(source_hash[:last_seen])
-        end
-      end
-      super(source_hash, default, &blk)
-    end
-  end
-
   class DNSDB
+    include OpenDNS::DNSDB::Response
     include OpenDNS::DNSDB::ByIP
     include OpenDNS::DNSDB::ByName
     include OpenDNS::DNSDB::Label
