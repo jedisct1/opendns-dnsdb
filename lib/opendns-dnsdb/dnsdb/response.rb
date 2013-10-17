@@ -2,7 +2,12 @@
 module OpenDNS
   class DNSDB
     module Response
+      module Common
+      end
+      
       class Raw < Hashie::Mash
+        include Common
+        
         def initialize(source_hash = nil, default = nil, &blk)
           if source_hash
             if source_hash[:first_seen]
@@ -17,12 +22,15 @@ module OpenDNS
       end
       
       class HashByName < Hash
+        include Common        
       end
       
       class HashByIP < Hash
+        include Common
       end
       
       class Distinct < Array
+        include Common
       end      
     end
   end

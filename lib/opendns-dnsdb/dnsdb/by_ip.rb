@@ -10,9 +10,9 @@ module OpenDNS
         responses_is_hash = responses.kind_of?(Hash)
         responses = { a: responses } unless responses_is_hash
         responses.each_pair do |key, history|
-          responses[key] = history.collect do |rr|
+          responses[key] = Response::Distinct.new(history.collect do |rr|
             rr.rr
-          end.flatten.uniq
+          end.flatten.uniq)
         end
         responses = responses.values.first unless responses_is_hash
         responses
