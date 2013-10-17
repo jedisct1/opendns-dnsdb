@@ -68,7 +68,31 @@ module OpenDNS
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
         labels.select { |name, label| label != :suspicious }
-      end      
+      end
+      
+      def unknown_domains(names)
+        labels = labels_by_name(names)
+        labels = [ labels ] unless labels.kind_of?(Enumerable)
+        labels.select { |name, label| label == :unknown }
+      end
+      
+      def not_unknown_domains(names)
+        labels = labels_by_name(names)
+        labels = [ labels ] unless labels.kind_of?(Enumerable)
+        labels.select { |name, label| label != :unknown }
+      end
+      
+      def benign_domains(names)
+        labels = labels_by_name(names)
+        labels = [ labels ] unless labels.kind_of?(Enumerable)
+        labels.select { |name, label| label == :benign }
+      end
+      
+      def not_benign_domains(names)
+        labels = labels_by_name(names)
+        labels = [ labels ] unless labels.kind_of?(Enumerable)
+        labels.select { |name, label| label != :benign }
+      end            
     end
   end
 end
