@@ -59,42 +59,42 @@ module OpenDNS
         include_unknown?(name)
       end
       
-      def suspicious_domains(names)
+      def suspicious_names(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
         names = labels.select { |name, label| label == :suspicious }.keys
         Response::Distinct.new(names)
       end
       
-      def not_suspicious_domains(names)
+      def not_suspicious_names(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
         names = labels.select { |name, label| label != :suspicious }.keys
         Response::Distinct.new(names)
       end
       
-      def unknown_domains(names)
+      def unknown_names(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
         names = labels.select { |name, label| label == :unknown }.keys        
         Response::Distinct.new(names)
       end
       
-      def not_unknown_domains(names)
+      def not_unknown_names(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
         names = labels.select { |name, label| label != :unknown }.keys
         Response::Distinct.new(names)
       end
       
-      def benign_domains(names)
+      def benign_names(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
         names = labels.select { |name, label| label == :benign }.keys
         Response::Distinct.new(names)
       end
       
-      def not_benign_domains(names)
+      def not_benign_names(names)
         labels = labels_by_name(names)
         labels = [ labels ] unless labels.kind_of?(Enumerable)
         names = labels.select { |name, label| label != :benign }.keys

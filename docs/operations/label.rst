@@ -1,8 +1,8 @@
 Getting labels
 ==============
 
-Getting the label for a domain
-------------------------------
+Getting the label for a name
+----------------------------
 
 | Domain names can be either benign (part of a whitelist), suspicious
 | (flagged by the OpenDNS security team) or uncategorized.
@@ -20,20 +20,20 @@ Returns a ``Symbol``:
 
     :benign
 
-Getting the labels for a set of domains
----------------------------------------
+Getting the labels for a set of names
+-------------------------------------
 
 | Domain names can be either benign (part of a whitelist), suspicious
 | (flagged by the OpenDNS security team) or uncategorized.
 
-| This method returns the labels for a set of domains, which can be either
+| This method returns the labels for a set of names, which can be either
 | ``:suspicious``, ``:benign`` or ``:unknown``.
 
 .. code-block:: ruby
 
     db.labels_by_name(['github.com', 'skyrock.com'])
 
-The labels for up to 42,000 domains can be queried at once.
+The labels for up to 42,000 names can be queried at once.
 
 Returns a ``Hash``:
 
@@ -44,8 +44,8 @@ Returns a ``Hash``:
         "skyrock.com" => :benign
     }
 
-Testing whether a set of domains contains suspicious domains
-------------------------------------------------------------
+Testing whether a set of names contains suspicious names
+--------------------------------------------------------
 
 .. code-block:: ruby
 
@@ -57,8 +57,8 @@ Returns ``true`` or ``false``:
 
     false
 
-Testing whether a set of domains contains benign domains
---------------------------------------------------------
+Testing whether a set of names contains benign names
+----------------------------------------------------
 
 .. code-block:: ruby
 
