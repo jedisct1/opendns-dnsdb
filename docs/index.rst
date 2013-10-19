@@ -41,7 +41,7 @@ Example
   is_malware = db.include_suspicious?(['wh4u6igxiglekn.su', 'excue.ru'])
 
   # Specifically, is excue.ru suspicious?
-  is_benign = db.is_suspicious?('excue.ru')
+  is_suspicious = db.is_suspicious?('excue.ru')
 
 Parallel requests
 =================

@@ -43,5 +43,5 @@ not_blocked_yet = db.not_suspicious_names(maybe_more_spam)
 is_malware = db.include_suspicious?(['wh4u6igxiglekn.su', 'excue.ru'])
 
 # Specifically, is excue.ru suspicious?
-is_benign = db.is_suspicious?('excue.ru')
+is_suspicious = db.is_suspicious?('excue.ru')
 ```
