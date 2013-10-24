@@ -153,3 +153,65 @@ Returns an ``Array``:
 
     ['github.com']
 
+Extracting the subset of benign names
+-------------------------------------
+
+Given a set of names, return a subset of names flagged as benign:
+
+.. code-block:: ruby
+
+    db.benign_names(['github.com', 'excue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['github.com']
+
+Extracting the subset of names not flagged as benign
+----------------------------------------------------
+
+Given a set of names, return a subset of names not flagged as
+benign:
+
+.. code-block:: ruby
+
+    db.not_benign_names(['github.com', 'excue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['excue.ru']
+
+Extracting the subset of unknown names
+--------------------------------------
+
+Given a set of names, return a subset of names flagged as unknown:
+
+.. code-block:: ruby
+
+    db.unknown_names(['github.com', 'exue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['exue.ru']
+
+Extracting the subset of names flagged as benign or suspicious
+---------------------------------------------------------------
+
+Given a set of names, return a subset of names flagged as benign or
+suspicious:
+
+.. code-block:: ruby
+
+    db.not_unknown_names(['github.com', 'excue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['github.com', 'excue.ru']
+
