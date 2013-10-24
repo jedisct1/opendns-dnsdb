@@ -70,6 +70,19 @@ Returns ``true`` or ``false``:
 
     true
 
+Testing whether a set of names contains unknown names
+-----------------------------------------------------
+
+.. code-block:: ruby
+
+    db.include_unknown?(['github.com', 'skyrock.com'])
+
+Returns ``true`` or ``false``:
+
+::
+
+    false
+
 Testing whether a domain is suspicious
 --------------------------------------
 
@@ -96,6 +109,19 @@ Returns ``true`` or ``false``:
 
     true
 
+Testing whether a domain is unknown
+-----------------------------------
+
+.. code-block:: ruby
+
+    db.is_unknown?('github.com')
+
+Returns ``true`` or ``false``:
+
+::
+
+    false
+
 Extracting the subset of suspicious names
 -----------------------------------------
 
@@ -119,7 +145,7 @@ suspicious:
 
 .. code-block:: ruby
 
-    db.suspicious_names(['github.com', 'excue.ru'])
+    db.not_suspicious_names(['github.com', 'excue.ru'])
 
 Returns an ``Array``:
 
