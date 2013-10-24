@@ -8,7 +8,7 @@ Getting the label for a name
 | (flagged by the OpenDNS security team) or uncategorized.
 
 | This method returns the label for a given domain, which can be either
-| ``:suspicious``, ``:bad`` or ``:unknown``.
+| ``:suspicious``, ``:benign`` or ``:unknown``.
 
 .. code-block:: ruby
 
