@@ -1,14 +1,14 @@
 Getting labels
 ==============
 
-Getting the label for a domain
-------------------------------
+Getting the label for a name
+----------------------------
 
 | Domain names can be either benign (part of a whitelist), suspicious
 | (flagged by the OpenDNS security team) or uncategorized.
 
 | This method returns the label for a given domain, which can be either
-| ``:suspicious``, ``:bad`` or ``:unknown``.
+| ``:suspicious``, ``:benign`` or ``:unknown``.
 
 .. code-block:: ruby
 
@@ -20,20 +20,20 @@ Returns a ``Symbol``:
 
     :benign
 
-Getting the labels for a set of domains
----------------------------------------
+Getting the labels for a set of names
+-------------------------------------
 
 | Domain names can be either benign (part of a whitelist), suspicious
 | (flagged by the OpenDNS security team) or uncategorized.
 
-| This method returns the labels for a set of domains, which can be either
+| This method returns the labels for a set of names, which can be either
 | ``:suspicious``, ``:benign`` or ``:unknown``.
 
 .. code-block:: ruby
 
     db.labels_by_name(['github.com', 'skyrock.com'])
 
-The labels for up to 42,000 domains can be queried at once.
+The labels for up to 42,000 names can be queried at once.
 
 Returns a ``Hash``:
 
@@ -44,8 +44,8 @@ Returns a ``Hash``:
         "skyrock.com" => :benign
     }
 
-Testing whether a set of domains contains suspicious domains
-------------------------------------------------------------
+Testing whether a set of names contains suspicious names
+--------------------------------------------------------
 
 .. code-block:: ruby
 
@@ -57,8 +57,8 @@ Returns ``true`` or ``false``:
 
     false
 
-Testing whether a set of domains contains benign domains
---------------------------------------------------------
+Testing whether a set of names contains benign names
+----------------------------------------------------
 
 .. code-block:: ruby
 
@@ -69,6 +69,19 @@ Returns ``true`` or ``false``:
 ::
 
     true
+
+Testing whether a set of names contains unknown names
+-----------------------------------------------------
+
+.. code-block:: ruby
+
+    db.include_unknown?(['github.com', 'skyrock.com'])
+
+Returns ``true`` or ``false``:
+
+::
+
+    false
 
 Testing whether a domain is suspicious
 --------------------------------------
@@ -96,6 +109,19 @@ Returns ``true`` or ``false``:
 
     true
 
+Testing whether a domain is unknown
+-----------------------------------
+
+.. code-block:: ruby
+
+    db.is_unknown?('github.com')
+
+Returns ``true`` or ``false``:
+
+::
+
+    false
+
 Extracting the subset of suspicious names
 -----------------------------------------
 
@@ -119,11 +145,73 @@ suspicious:
 
 .. code-block:: ruby
 
-    db.suspicious_names(['github.com', 'excue.ru'])
+    db.not_suspicious_names(['github.com', 'excue.ru'])
 
 Returns an ``Array``:
 
 ::
 
     ['github.com']
+
+Extracting the subset of benign names
+-------------------------------------
+
+Given a set of names, return a subset of names flagged as benign:
+
+.. code-block:: ruby
+
+    db.benign_names(['github.com', 'excue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['github.com']
+
+Extracting the subset of names not flagged as benign
+----------------------------------------------------
+
+Given a set of names, return a subset of names not flagged as
+benign:
+
+.. code-block:: ruby
+
+    db.not_benign_names(['github.com', 'excue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['excue.ru']
+
+Extracting the subset of unknown names
+--------------------------------------
+
+Given a set of names, return a subset of names flagged as unknown:
+
+.. code-block:: ruby
+
+    db.unknown_names(['github.com', 'exue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['exue.ru']
+
+Extracting the subset of names flagged as benign or suspicious
+---------------------------------------------------------------
+
+Given a set of names, return a subset of names flagged as benign or
+suspicious:
+
+.. code-block:: ruby
+
+    db.not_unknown_names(['github.com', 'excue.ru'])
+
+Returns an ``Array``:
+
+::
+
+    ['github.com', 'excue.ru']
 
