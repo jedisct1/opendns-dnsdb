@@ -8,6 +8,7 @@ require_relative 'dnsdb/response'
 require_relative 'dnsdb/by_ip'
 require_relative 'dnsdb/by_name'
 require_relative 'dnsdb/label'
+require_relative 'dnsdb/related'
 
 module OpenDNS
   class DNSDB
@@ -15,6 +16,7 @@ module OpenDNS
     include OpenDNS::DNSDB::ByIP
     include OpenDNS::DNSDB::ByName
     include OpenDNS::DNSDB::Label
+    include OpenDNS::DNSDB::Related    
     
     DEFAULT_TIMEOUT = 15
     DEFAULT_MAXCONNECTS = 10
