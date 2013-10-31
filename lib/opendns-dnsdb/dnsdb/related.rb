@@ -1,6 +1,11 @@
+
+require_relative 'rrutils'
+
 module OpenDNS
   class DNSDB
     module Related
+      include OpenDNS::DNSDB::RRUtils
+
       def related_names_with_score(names)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
@@ -39,6 +44,10 @@ module OpenDNS
       
       def related_names(names)
         related_names_with_score(names).keys
+      end
+      
+      def distinct_related_names(names)
+        Response::Distinct.new(distinct_rrs(related_names(names)))
       end
     end
   end
