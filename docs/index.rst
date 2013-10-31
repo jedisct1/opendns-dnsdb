@@ -44,7 +44,7 @@ Example
   is_suspicious = db.is_suspicious?('excue.ru')
 
   # Find all .ru names frequently observed with wh4u6igxiglekn.su and excue.ru:
-  related_ru = db.distinct_related_names(['wh4u6igxiglekn.su', 'excue.ru'],
+  rel_ru = db.distinct_related_names(['wh4u6igxiglekn.su', 'excue.ru'],
                                       max_names: 500,
                                       max_depth: 4) { |n| n.end_with? '.ru.' }
 
