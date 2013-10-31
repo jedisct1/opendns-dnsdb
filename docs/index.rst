@@ -76,8 +76,8 @@ Operations
 
 .. toctree::
   :maxdepth: 1
-  
-  operations/by_name
-  operations/by_ip  
-  operations/label  
 
+  operations/by_name
+  operations/by_ip
+  operations/label
+  operations/related
