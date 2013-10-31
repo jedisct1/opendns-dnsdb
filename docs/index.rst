@@ -1,6 +1,6 @@
-==============================================
-OpenDNS Security Graph client library for Ruby
-==============================================
+=============================
+OpenDNS Security Graph client
+=============================
 
 .. _installation:
 
