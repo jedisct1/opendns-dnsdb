@@ -102,6 +102,8 @@ This will return a list of names related to those provided in the
 vector, but also names related to these newly found names, names
 related to these related names:
 
+.. code-block:: ruby
+
     db.distinct_related_names(['www.github.com', 'www.github.io'],
                               max_results: 250,
                               max_depth: 3)
@@ -110,9 +112,13 @@ Since a deep traversal can return a lot of results, some not being of
 interest, a filter can be provided. This filter will be automatically applied
 after each iteration:
 
+.. code-block:: ruby
+
     db.distinct_related_names(['www.github.com', 'www.github.io'],
                               max_results: 250,
                               max_depth: 3) do |name, score|
       name.match(/^com-/) && score > 0.1
     end
 
+A single name can also be given instead of a vector. This is
+equivalent to ``related_names`` when a deep traversal is not performed.
