@@ -86,3 +86,4 @@ Operations
   operations/by_ip
   operations/label
   operations/related
+  operations/traffic  
