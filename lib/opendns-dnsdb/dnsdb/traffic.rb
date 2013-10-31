@@ -4,6 +4,7 @@ module OpenDNS
     module Traffic
       require 'cgi'
       require 'date'
+      require 'descriptive_statistics'      
       
       DEFAULT_DAYS_BACK = 7
 
@@ -40,6 +41,36 @@ module OpenDNS
         end
         responses = Response::HashByName[responses]
         responses = responses.values.first unless names_is_array
+        responses        
+      end
+
+      def relative_standard_deviation(names_ts)
+        names_ts_is_hash = names_ts.kind_of?(Hash)
+        names_ts = { x: names_ts } unless names_ts_is_hash
+        responses = { }
+        names_ts.each_pair do |name, ts|
+          mean = ts.mean
+          if mean <= 0.0
+            responses[name] = 0.0
+          else
+            responses[name] = ts.standard_deviation / mean * 100.0
+          end
+        end
+        responses = Response::HashByName[responses]
+        responses = responses.values.first unless names_ts_is_hash
+        responses
+      end
+      
+      def high_pass_filter(names_ts, options)
+        names_ts_is_hash = names_ts.kind_of?(Hash)
+        names_ts = { x: names_ts } unless names_ts_is_hash
+        responses = { }
+        cutoff = options[:cutoff]
+        names_ts.each_pair do |name, ts|
+          responses[name] = ts.map { |x| x < cutoff ? 0.0 : x }
+        end
+        responses = Response::HashByName[responses]
+        responses = responses.values.first unless names_ts_is_hash
         responses        
       end
     end
