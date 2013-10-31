@@ -1,7 +1,7 @@
-OpenDNS-DNSDB-Ruby
-==================
+OpenDNS Security Graph Client
+=============================
 
-Ruby client library for the OpenDNS DNS database ("Security Graph").
+Client library for the OpenDNS DNS database (aka "Security Graph").
 
 The OpenDNS DNS database keeps track of DNS records observed by
 OpenDNS public resolvers over a 90 days period.
