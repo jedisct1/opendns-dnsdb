@@ -6,7 +6,7 @@ module OpenDNS
     module Related
       include OpenDNS::DNSDB::RRUtils
 
-      def related_names_with_score(names)
+      def related_names_with_score(names, &filter)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
         multi = Ethon::Multi.new
@@ -38,16 +38,19 @@ module OpenDNS
           responses[name] = Hash[*tb1.map { |x| [x[0], x[1] / upper] }.flatten]
         end
         responses = Response::HashByName[responses]
+        if block_given?
+          responses.select! { |name, score| filter.call(name, score) }
+        end
         responses = responses.values.first unless names_is_array
-        responses        
+        responses
       end
       
-      def related_names(names)
-        related_names_with_score(names).keys
+      def related_names(names, &filter)
+        related_names_with_score(names, &filter).keys
       end
       
-      def distinct_related_names(names)
-        Response::Distinct.new(distinct_rrs(related_names(names)))
+      def distinct_related_names(names, &filter)
+        Response::Distinct.new(distinct_rrs(related_names(names, &filter)))
       end
     end
   end
