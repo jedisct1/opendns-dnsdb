@@ -31,7 +31,11 @@ module OpenDNS
       
       class Distinct < Array
         include Common
-      end      
+      end
+      
+      class TimeSeries < Array
+        include Common
+      end
     end
   end
 end
