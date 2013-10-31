@@ -122,3 +122,5 @@ after each iteration:
 
 A single name can also be given instead of a vector. This is
 equivalent to ``related_names`` when a deep traversal is not performed.
+
+This function returns a ``Response::Distinct`` object.
