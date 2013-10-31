@@ -35,7 +35,7 @@ Getting the labels for a set of names
 
 The labels for up to 42,000 names can be queried at once.
 
-Returns a ``Hash``:
+Returns a ``Response::HashByName``:
 
 ::
 
@@ -131,7 +131,7 @@ Given a set of names, return a subset of names flagged as suspicious:
 
     db.suspicious_names(['github.com', 'excue.ru'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -147,7 +147,7 @@ suspicious:
 
     db.not_suspicious_names(['github.com', 'excue.ru'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -162,7 +162,7 @@ Given a set of names, return a subset of names flagged as benign:
 
     db.benign_names(['github.com', 'excue.ru'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -178,7 +178,7 @@ benign:
 
     db.not_benign_names(['github.com', 'excue.ru'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -193,7 +193,7 @@ Given a set of names, return a subset of names flagged as unknown:
 
     db.unknown_names(['github.com', 'exue.ru'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -209,7 +209,7 @@ suspicious:
 
     db.not_unknown_names(['github.com', 'excue.ru'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 

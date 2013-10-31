@@ -11,7 +11,7 @@ Getting the list of names served by a name server
 
     db.names_by_nameserver_ip('199.185.137.3')
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -63,7 +63,7 @@ Getting the list of names that a set of name servers have been serving
 
     db.names_by_nameserver_ip(['199.185.137.3', '65.19.167.109'])
 
-Returns a ``Hash``:
+Returns a ``Response::HashByIP``:
 
 ::
 
@@ -114,14 +114,14 @@ Returns a ``Hash``:
 Getting the list of unique names served by a set of name servers
 ----------------------------------------------------------------
 
-This returns an ``Array`` of unique names served by a set of name
+This returns a ``Response::Distinct`` of unique names served by a set of name
 servers:
 
 .. code-block:: ruby
 
     db.distinct_names_by_nameserver_ip(['199.185.137.3', '65.19.167.109'])
 
-Returns am ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -175,7 +175,7 @@ Getting the list of all names that resolved to an IP
 
     db.names_by_ip('192.30.252.131')
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -194,7 +194,7 @@ Getting the list of all names that resolved to a set of IPs
 
     db.names_by_ip(['192.30.252.131', '199.233.90.68'])
 
-Returns a ``Hash``:
+Returns a ``Response::HashByIP``:
 
 ::
 
@@ -218,7 +218,7 @@ Getting the list of unique names for a set of IPs
 
     db.distinct_names_by_ip(['192.30.252.131', '199.233.90.68'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 

@@ -8,7 +8,7 @@ Getting the nameserver IP addresses for a name
 
     db.nameservers_ips_by_name('github.com')
 
-| This returns an ``Array`` of IP addresses seen for this name for the past 3
+| This returns a ``Response::Distinct`` of IP addresses seen for this name for the past 3
 | months, or an empty list if none have been seen.
 
 ::
@@ -27,7 +27,7 @@ Getting the nameserver IPs for a set of names
 
     db.nameservers_ips_by_name(['github.com', 'github.io'])
 
-This returns a ``Hash``:
+This returns a ``Response::HashByName``:
 
 ::
 
@@ -57,7 +57,7 @@ Getting a list of distinct name servers for a set of names
 
     db.distinct_nameservers_ips_by_name(['github.com', 'github.io'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -68,7 +68,7 @@ Returns an ``Array``:
         [3] "208.78.71.16"
     ]
 
-| The output is always an ``Array`` of distinct IP addresses.
+| The output is always a ``Response::Distinct`` of distinct IP addresses.
 | This method also works with a single domain name, and is an alias for
 | ``nameservers_ips_by_name`` in that case.
 
@@ -82,7 +82,7 @@ Getting the list of IP addresses for a name
 
     db.ips_by_name('github.com')
 
-Returns an ``Array``"
+Returns a ``Response::Distinct``"
 
 ::
 
@@ -104,7 +104,7 @@ Bulk lookups can be achieved by providing a list instead of a string:
 
     db.ips_by_name(['github.com', 'github.io'])
 
-Returns a ``Hash``:
+Returns a ``Response::HashByName``:
 
 ::
 
@@ -129,7 +129,7 @@ Getting the list of unique IP addresses for a set of names
 
     db.distinct_ips_by_name(['github.com', 'github.io'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -150,7 +150,7 @@ Getting the list of mail exchangers for a name
 
     db.mxs_by_name('github.com')
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
@@ -169,7 +169,7 @@ Getting the list of mail exchangers for a set of names
 
     db.mxs_by_name(['github.com', 'github.io'])
 
-Returns a ``Hash``:
+Returns a ``Response::HashByName``:
 
 ::
 
@@ -191,7 +191,7 @@ Getting the list of unique mail exchangers for a set of names
 
     db.distinct_mxs_by_name(['github.com', 'github.io'])
 
-Returns an ``Array`` of unique mail exchangers:
+Returns a ``Response::Distinct`` of unique mail exchangers:
 
 ::
 
@@ -210,7 +210,7 @@ Getting the list of CNAMEs for a name
 
     db.cnames_by_name('www.skyrock.com')
 
-| Returns an ``Array`` of CNAME records seen over the past 3 months for
+| Returns a ``Response::Distinct`` of CNAME records seen over the past 3 months for
 | this name:
 
 ::
@@ -226,7 +226,7 @@ Getting the list of CNAMEs for a set of names
 
     db.cnames_by_name(['www.skyrock.com', 'www.apple.com'])
 
-Returns a ``Hash``:
+Returns a ``Response::HashByName``:
 
 ::
 
@@ -246,7 +246,7 @@ Getting the list of unique CNAMEs seen for a list of names
 
     db.distinct_cnames_by_name(['www.skyrock.com', 'www.apple.com'])
 
-Returns an ``Array``:
+Returns a ``Response::Distinct``:
 
 ::
 
