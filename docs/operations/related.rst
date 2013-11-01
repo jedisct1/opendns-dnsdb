@@ -51,8 +51,8 @@ And this only retrieves names whose score is more than 0.1:
 
     db.related_names('www.skyrock.com') { |name, score| score > 0.1 }
 
-Getting the list of related, with scores
-----------------------------------------
+Getting the list of related names, with scores
+----------------------------------------------
 
 In addition to a list of names, a "score" can be returned for each
 name found. This score is within 0.0 and 1.0, 1.0 meaning that a name
