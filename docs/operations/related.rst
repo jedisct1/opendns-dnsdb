@@ -55,9 +55,9 @@ Getting the list of related names, with scores
 ----------------------------------------------
 
 In addition to a list of names, a "score" can be returned for each
-name found. This score is within 0.0 and 1.0, 1.0 meaning that a name
-is likely to be closely related to the reference name, 0.0 meaning
-that these have not very frequently been observed together.
+name found. This score is in the [0.0, 1.0] range, 1.0 meaning that a
+name is likely to be closely related to the reference name, 0.0
+meaning that these have not been observed together very frequently.
 
 Related names for a single name can be looked up, as well as for
 a vector of names:
