@@ -56,8 +56,9 @@ Example
   # Remove the noise from this traffic - Days with less than 10 queries
   traffic = db.high_pass_filter(traffic, cutoff: 10)
 
-  # Check if this traffic is suspiciously spiky:
-  traffic_is_suspicious = db.relative_standard_deviation(traffic) > 90
+  # Check if the traffic for github.io is suspiciously spiky:
+  traffic_is_suspicious =
+    db.relative_standard_deviation(traffic['www.github.io']) > 90
 
 Parallel requests
 =================
