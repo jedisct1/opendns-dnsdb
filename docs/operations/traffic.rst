@@ -21,6 +21,7 @@ ends at the current day, a day starting at 00:00 UTC.
     db.daily_traffic_by_name('www.github.com')
 
 The output is a ``Result::TimeSeries`` object:
+
 ..
 
     [
@@ -37,8 +38,10 @@ This method accepts several options:
 
 - ``start``: a ``Date`` object representing the lower bound of the
 time interval
+
 - ``end``: a ``Date`` object representing the higher bound of the
 time interval
+
 - ``days_back``: if ``start`` is not provided, this represents the
 number of days to go back in time.
 
@@ -46,11 +49,9 @@ Here are some examples featuring these options:
 
 .. code-block:: ruby
 
-    db.daily_traffic_by_name('www.github.com',
-      end: Date.today - 2, days_back: 10)
+    db.daily_traffic_by_name('www.github.com', end: Date.today - 2, days_back: 10)
     
-    db.daily_traffic_by_name('www.github.com',
-      start: Date.today - 10)
+    db.daily_traffic_by_name('www.github.com', start: Date.today - 10)
 
 The traffic for multiple domains can be looked up, provided that a
 vector is given instead of a single name. In that case, the output is
@@ -69,6 +70,7 @@ queries for a set of domains:
     ts.merge(ts) { |name, ts| ts.median.to_i }
     
 ..
+
     {
         "www.github.com" => 5954983,
          "www.github.io" => 528002
