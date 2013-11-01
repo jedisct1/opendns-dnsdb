@@ -70,3 +70,57 @@ queries for a set of domains:
         "www.github.com" => 5954983,
          "www.github.io" => 528002
     }
+
+Anomaly detection in traffic
+----------------------------
+
+A benign web site tends to have a comparable traffic every day. Sudden
+spikes or drop of traffic usually indicate a major event (incident,
+unusual volume of sent email), or some suspicious activity.
+
+Domain names used as C&C typically receive very little traffic, and
+suddenly get a spike of traffic for a short period of time. The same
+can be observed with compromised hosts acting as intermediaries.
+
+After having retrieved the traffic for a name, computing the relative
+standard deviation is a simple and efficient way to detect anomalies.
+
+To do so, the library includes the ``descriptive_statistics`` module
+and implements a ``relative_standard_deviation`` method. This method
+can work on the time series of a single domain, as well as on a set
+of multiple time series.
+
+.. code-block:: ruby
+
+    ts = d.daily_traffic_by_name(['skyrock.com', 'github.com', 'ooctmxmgwigqt.info'])
+    ap d.relative_standard_deviation(ts)
+
+This outputs either a ``Response::TimeSeries`` or a ``Response::HashByName`` object:
+
+::
+
+    {
+               "skyrock.com" => 2.4300100908269657,
+                "github.com" => 10.628632305278618,
+        "ooctmxmgwigqt.info" => 244.18566965045403
+    }
+
+In this example, we can clearly spot a domain name whose traffic
+doesn't follow what we usually observe for a benign domain.
+
+High-pass filter
+----------------
+
+Domains receiving little traffic are frequently receiving more noise
+(bots, internal traffic) than queries sent by actual users.
+
+A simple high pass filter sets to 0 all entries of a time series below
+a cutoff value. This is provided by the ``high_pass_filter`` method:
+
+.. code-block:: ruby
+
+    ts = d.high_pass_filter(ts, cutoff: 5.0)
+
+This method works on the time series of a single domain, as well as on
+a set of multiple time series. The result is either a
+`Response::TimeSeries` or a `Response::HashByName` object.
