@@ -60,3 +60,16 @@ a ``Result::HashByName`` object.
 
     db.daily_traffic_by_name(['www.github.com', 'www.github.io'])
 
+For example, the following snippet compares the median number of
+queries for a set of domains:
+
+.. code-block:: ruby
+
+    ts = db.daily_traffic_by_name(['www.github.com', 'www.github.io'])
+    ts.merge(ts) { |name, ts| ts.median.to_i }
+    
+..
+    {
+        "www.github.com" => 5954983,
+         "www.github.io" => 528002
+    }
