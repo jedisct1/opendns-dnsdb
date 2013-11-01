@@ -22,7 +22,7 @@ ends at the current day, a day starting at 00:00 UTC.
 
 The output is a ``Result::TimeSeries`` object:
 
-..
+::
 
     [
         [0] 6152525,
@@ -64,7 +64,7 @@ queries for a set of domains:
     ts = db.daily_traffic_by_name(['www.github.com', 'www.github.io'])
     ts.merge(ts) { |name, ts| ts.median.to_i }
     
-..
+::
 
     {
         "www.github.com" => 5954983,
