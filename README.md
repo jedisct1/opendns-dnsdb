@@ -49,4 +49,16 @@ is_suspicious = db.is_suspicious?('excue.ru')
 rel_ru = db.distinct_related_names(['wh4u6igxiglekn.su', 'excue.ru'],
                                     max_names: 500,
                                     max_depth: 4) { |n| n.end_with? '.ru.' }
+
+# Get the number of daily requests for the past 10 days, for
+# github.com and github.io:
+traffic = db.daily_traffic_by_name(['www.github.com', 'www.github.io'],
+                                   days_back: 10)
+
+# Remove the noise from this traffic - Days with less than 10 queries
+traffic = db.high_pass_filter(traffic, cutoff: 10)
+
+# Check if this traffic is suspiciously spiky:
+traffic_is_suspicious = db.relative_standard_deviation(traffic) > 90
+
 ```
