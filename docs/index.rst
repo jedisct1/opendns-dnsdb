@@ -53,7 +53,7 @@ Example
   traffic = db.daily_traffic_by_name(['www.github.com', 'www.github.io'],
                                      days_back: 10)
 
-  # Remove the noise from this traffic - Days with less than 10 queries
+  # Cut the noise from this traffic - Days with less than 10 queries
   traffic = db.high_pass_filter(traffic, cutoff: 10)
 
   # Check if the traffic for github.io is suspiciously spiky:
