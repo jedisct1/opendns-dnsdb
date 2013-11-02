@@ -4,12 +4,13 @@ Related names
 Related names are names that have been frequently observed shortly
 before or after a reference name.
 
-This has proven to be very useful to discover C2 domains used by
-malware when only a few of them were previously known. This is also
-useful to investigate an infection chain.
+This has proven to be very useful to discover command and control
+domains used by malware when only a few of them were previously known.
+This is also useful to investigate an infection chain.
 
-Internally, multiple complementary matching algorithms are used. But the
-library takes care of aggregating and normalizing the results.
+Internally, multiple complementary matching algorithms are used, but
+this client library takes care of aggregating and normalizing the
+results.
 
 Getting the list of related names
 ---------------------------------
@@ -36,7 +37,7 @@ An optional block can also be given.
 
 This block is a filter: it will be given each (name, score) as an
 argument, and only names for which the return value of this block is
-not ``false``/``nil`` will ke kept.
+not ``false``/``nil`` will be kept.
 
 For example, this only retrieves names matching a given regular
 expression:
