@@ -9,7 +9,7 @@ Installation
 
 .. code-block:: bash
 
-  $ bundle && rake install
+  $ gem install opendns-dnsrb
 
 Example
 =======
