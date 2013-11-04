@@ -9,7 +9,7 @@ Installation
 
 .. code-block:: bash
 
-  $ gem install opendns-dnsrb
+  $ gem install opendns-dnsdb
 
 Example
 =======
