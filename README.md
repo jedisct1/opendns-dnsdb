@@ -76,3 +76,6 @@ file extension), just convert it to a `.pem` certificate file:
     openssl pkcs12 -in client.p12 -out client.pem -clcerts
 
 And supply the path to the `.pem` file to the library.
+
+Also make sure that the version of the curl library you are using is
+up-to-date. Old versions had major bugs with concurrent queries.
