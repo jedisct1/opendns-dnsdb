@@ -78,15 +78,30 @@ Setup
 .. code-block:: ruby
 
   require 'opendns-dnsdb'
-  db = OpenDNS::DNSDB.new(sslcert: 'client.p12', sslcertpasswd: 'opendns')
+  db = OpenDNS::DNSDB.new(sslcert: 'client.pem', sslcertpasswd: 'opendns')
 
 Supported options:
 
 * ``timeout``: timeout for each query, in seconds (default: 15 seconds)
 * ``sslcert``: path to the SSL certificate
-* ``sslcerttype``: SSL certificate type, defaults to ``p12``
+* ``sslcerttype``: SSL certificate type, defaults to ``pem``.
 * ``sslcertpasswd``: SSL certificate password
 * ``maxconnects``: max number of parallel operations (default: 10)
+
+Note on certificates format
+===========================
+
+The curl library currently has some major issues dealing with
+certificates stored in the PKCS12 format.
+
+If the certificate you have been given is in PKCS12 format (`.p12`
+file extension), just convert it to a `.pem` certificate file:
+
+.. code-block:: bash
+
+    openssl pkcs12 -in client.p12 -out client.pem -clcerts
+
+And supply the path to the ``.pem`` file to the library.
 
 Operations
 ==========

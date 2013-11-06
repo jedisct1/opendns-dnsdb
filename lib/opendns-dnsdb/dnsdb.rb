@@ -37,8 +37,8 @@ module OpenDNS
       @timeout = params[:timeout].to_f if params[:timeout]
       @maxconnects = DEFAULT_MAXCONNECTS
       @maxconnects = params[:maxconnects].to_i if params[:maxconnects]
-      @sslcerttype = params[:sslcerttype] || 'p12'
-      @sslcertpasswd = params[:sslcertpasswd] || ''
+      @sslcerttype = params[:sslcerttype] || 'pem'
+      @sslcertpasswd = params[:sslcertpasswd] || 'opendns'
       @options = {
         followlocation: true,
         timeout: @timeout,

@@ -19,7 +19,8 @@ Example
 
 ```ruby
 # Setup
-db = OpenDNS::DNSDB.new(sslcert: 'client.p12', sslcertpasswd: 'opendns')
+db = OpenDNS::DNSDB.new(sslcert: 'client.pem',
+                        sslcerttype: 'pem', sslcertpasswd: 'opendns')
 
 # A short list of known spam domains using a fast-flux infrastructure
 spam_names = ['com-garciniac.net', 'bbc-global.co.uk', 'com-october.net']
@@ -62,3 +63,16 @@ traffic = db.high_pass_filter(traffic, cutoff: 10)
 traffic_is_suspicious =
   db.relative_standard_deviation(traffic['www.github.io']) > 90
 ```
+
+Note on certificates format
+---------------------------
+
+The curl library currently has some major issues dealing with
+certificates stored in the PKCS12 format.
+
+If the certificate you have been given is in PKCS12 format (`.p12`
+file extension), just convert it to a `.pem` certificate file:
+
+    openssl pkcs12 -in client.p12 -out client.pem -clcerts
+
+And supply the path to the `.pem` file to the library.
