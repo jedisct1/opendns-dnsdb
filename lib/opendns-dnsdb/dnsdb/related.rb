@@ -77,9 +77,8 @@ module OpenDNS
       
       def distinct_related_names(names, options = { }, &filter)
         names = [ names ] unless names.kind_of?(Enumerable)
-        return [ ] if names.length >= options[:max_names] if options[:max_names]
         res = Response::Distinct.new(distinct_rrs(related_names(names, &filter))) - names
-        res = res[0...options[:max_names]] if options[:max_names]
+        return res[0...options[:max_names]] if options[:max_names] && res.length >= options[:max_names]
         if (options[:max_depth] || 1) > 1
           options0 = options.clone
           options0[:max_depth] -= 1
