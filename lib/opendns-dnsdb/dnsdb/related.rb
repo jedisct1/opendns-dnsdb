@@ -77,12 +77,13 @@ module OpenDNS
       
       def distinct_related_names(names, options = { }, &filter)
         names = [ names ] unless names.kind_of?(Enumerable)
-        res = Response::Distinct.new(distinct_rrs(related_names(names, &filter)))
+        return [ ] if names.length >= options[:max_names] if options[:max_names]
+        res = Response::Distinct.new(distinct_rrs(related_names(names, &filter))) - names
         res = res[0...options[:max_names]] if options[:max_names]
         if (options[:max_depth] || 1) > 1
           options0 = options.clone
           options0[:max_depth] -= 1
-          related = distinct_related_names(res - names, options0, &filter)
+          related = distinct_related_names(res, options0, &filter)
           res += related - names
           res.uniq!
           res = res[0...options[:max_names]] if options[:max_names]          
