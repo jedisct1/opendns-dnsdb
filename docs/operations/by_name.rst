@@ -1,5 +1,5 @@
-Getting informations out of a name
-==================================
+Getting information out of a name
+=================================
 
 Getting the nameserver IP addresses for a name
 ----------------------------------------------

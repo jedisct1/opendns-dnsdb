@@ -1,5 +1,5 @@
-Getting informations out of an IP address
-=========================================
+Getting information out of an IP address
+========================================
 
 Getting the list of names served by a name server
 -------------------------------------------------
@@ -168,7 +168,7 @@ Returns a ``Response::Distinct``:
 Getting the list of all names that resolved to an IP
 ----------------------------------------------------
 
-| This returns all the names that an IP has been seen for, for the past
+| This returns all the names that have been seen for an IP over the past
 | 3 months:
 
 .. code-block:: ruby
