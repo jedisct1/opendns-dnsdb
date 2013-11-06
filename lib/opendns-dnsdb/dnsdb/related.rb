@@ -82,8 +82,9 @@ module OpenDNS
         if (options[:max_depth] || 1) > 1
           options0 = options.clone
           options0[:max_depth] -= 1
-          related = distinct_related_names(res, options0, &filter)
-          res = (res + (related - names)).uniq
+          related = distinct_related_names(res - names, options0, &filter)
+          res += related - names
+          res.uniq!
           res = res[0...options[:max_names]] if options[:max_names]          
         end
         res
