@@ -44,7 +44,8 @@ module OpenDNS
         timeout: @timeout,
         sslcert: @sslcert,
         sslcerttype: @sslcerttype,
-        sslcertpasswd: @sslcertpasswd
+        sslcertpasswd: @sslcertpasswd,
+        maxconnects: @maxconnects
       }
     end
 
