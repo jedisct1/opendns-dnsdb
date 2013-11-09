@@ -4,5 +4,6 @@ gem 'descriptive_statistics'
 gem 'ethon'
 gem 'hashie'
 gem 'multi_json'
+gem 'typhoeus'
 
 gemspec
