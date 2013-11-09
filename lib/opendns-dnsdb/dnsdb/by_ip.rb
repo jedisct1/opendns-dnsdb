@@ -21,19 +21,19 @@ module OpenDNS
       def history_by_ip(ips, type)
         ips_is_array = ips.kind_of?(Enumerable)
         ips = [ ips ] unless ips_is_array
-        multi = Ethon::Multi.new
+        multi = Typhoeus::Hydra.hydra
         queries = { }
         ips.each do |ip|
           next if queries[ip]
           url = "/dnsdb/ip/#{type}/#{ip}.json"
           query = query_handler(url)
-          multi.add(query)
+          multi.queue(query)
           queries[ip] = query
         end
-        multi.perform
+        multi.run
         responses = { }
         queries.each_pair do |ip, query|
-          obj = MultiJson.load(query.response_body)
+          obj = MultiJson.load(query.response.body)
           responses[ip] = Response::Raw.new(obj).rrs
         end
         responses = Response::HashByIP[responses]

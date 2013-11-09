@@ -11,7 +11,7 @@ module OpenDNS
       def daily_traffic_by_name(names, options = { })
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
-        multi = Ethon::Multi.new
+        multi = Typhoeus::Hydra.hydra
         date_end = options[:start] || Date.today
         date_end_s = CGI::escape("#{date_end.year}/#{date_end.month}/#{date_end.day}/23")
         days_back = options[:days_back] || DEFAULT_DAYS_BACK
@@ -25,13 +25,13 @@ module OpenDNS
           url_traffic = "/appserver/?v=1&function=domain2-system&domains=#{name0}" +
           "&locations=&start=#{date_start_s}&stop=#{date_end_s}"
           query_traffic = query_handler(url_traffic)
-          multi.add(query_traffic)
+          multi.queue(query_traffic)
           queries_traffic[name] = query_traffic
         end
-        multi.perform
+        multi.run
         responses = { }
         queries_traffic.each_pair do |name, query|
-          obj = MultiJson.load(query.response_body)
+          obj = MultiJson.load(query.response.body)
           tc = obj['response']
           tc = tc.group_by { |x| x[0].split('/')[0...3].join('/') }
           tc.each_key do |date_s|

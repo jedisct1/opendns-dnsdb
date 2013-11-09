@@ -1,6 +1,6 @@
 
 require 'date'
-require 'ethon'
+require 'typhoeus'
 require 'hashie'
 require 'multi_json'
 
@@ -51,8 +51,10 @@ module OpenDNS
 
     def query_handler(endpoint, method = :get, options = { })
       url = SGRAPH_API_BASE_URL + endpoint
-      query = Ethon::Easy.new(@options)
-      query.http_request(url, method, options)
+      options = options.merge(@options)
+      options.merge!(method: method)
+      query = Typhoeus::Request.new(url,
+        @options.merge(options).merge(method: method))
       query
     end
   end

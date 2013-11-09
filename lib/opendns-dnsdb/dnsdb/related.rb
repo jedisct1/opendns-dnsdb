@@ -9,28 +9,28 @@ module OpenDNS
       def related_names_with_score(names, &filter)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
-        multi = Ethon::Multi.new
+        multi = Typhoeus::Hydra.hydra
         queries_links = { }
         queries_coocs = { }
         names.each do |name|
           url_links = "/links/name/#{name}.json"
           query_links = query_handler(url_links)
-          multi.add(query_links)
+          multi.queue(query_links)
           queries_links[name] = query_links
 
           url_coocs = "/recommendations/name/#{name}.json"
           query_coocs = query_handler(url_coocs)
-          multi.add(query_coocs)
+          multi.queue(query_coocs)
           queries_coocs[name] = query_coocs
         end
-        multi.perform
+        multi.run
         responses = { }
         queries_coocs.each_pair do |name, query|
-          if query.response_body.empty?
+          if query.response.body.empty?
             responses[name] ||= { }
             next
           end
-          obj = MultiJson.load(query.response_body)
+          obj = MultiJson.load(query.response.body)
           if pfs2 = Response::Raw.new(obj).pfs2
             responses[name] = Hash[*pfs2.flatten]
           else
@@ -39,10 +39,10 @@ module OpenDNS
         end
         queries_links.each_pair do |name, query|
           responses[name] ||= { }          
-          if query.response_body.empty?
+          if query.response.body.empty?
             next
           end
-          obj = MultiJson.load(query.response_body)          
+          obj = MultiJson.load(query.response.body)          
           if tb1 = Response::Raw.new(obj).tb1          
             upper = [1.0, tb1.map { |x| x[1] }.max].max
             responses[name] = Hash[*tb1.map { |x| [x[0], x[1] / upper] }.flatten]

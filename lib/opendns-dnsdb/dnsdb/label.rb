@@ -14,14 +14,14 @@ module OpenDNS
       def labels_by_name(names)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
-        multi = Ethon::Multi.new
+        multi = Typhoeus::Hydra.hydra
         names_json = MultiJson.dump(names)
         cacheid = SipHash::digest(CACHE_KEY, names_json).to_s(16)
         url = "/infected/names/#{cacheid}.json"
         query = query_handler(url, :get, { body: names_json })
-        multi.add(query)
-        multi.perform
-        responses = MultiJson.load(query.response_body)
+        multi.queue(query)
+        multi.run
+        responses = MultiJson.load(query.response.body)
         responses = responses['scores']
         responses.each_pair do |name, label|
           responses[name] = [:suspicious, :unknown, :benign][label + 1]
