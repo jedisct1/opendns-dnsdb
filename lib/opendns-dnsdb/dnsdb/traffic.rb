@@ -11,7 +11,7 @@ module OpenDNS
       def daily_traffic_by_name(names, options = { })
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
-        multi = Typhoeus::Hydra.hydra
+        multi = query_multi
         date_end = options[:start] || Date.today
         date_end_s = CGI::escape("#{date_end.year}/#{date_end.month}/#{date_end.day}/23")
         days_back = options[:days_back] || DEFAULT_DAYS_BACK

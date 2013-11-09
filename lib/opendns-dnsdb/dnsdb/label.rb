@@ -14,7 +14,7 @@ module OpenDNS
       def labels_by_name(names)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
-        multi = Typhoeus::Hydra.hydra
+        multi = query_multi
         names_json = MultiJson.dump(names)
         cacheid = SipHash::digest(CACHE_KEY, names_json).to_s(16)
         url = "/infected/names/#{cacheid}.json"

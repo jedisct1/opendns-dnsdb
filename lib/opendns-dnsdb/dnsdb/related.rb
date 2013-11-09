@@ -9,7 +9,7 @@ module OpenDNS
       def related_names_with_score(names, &filter)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
-        multi = Typhoeus::Hydra.hydra
+        multi = query_multi
         queries_links = { }
         queries_coocs = { }
         names.each do |name|

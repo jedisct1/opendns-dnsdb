@@ -21,22 +21,22 @@ module OpenDNS
     include OpenDNS::DNSDB::Traffic
     
     DEFAULT_TIMEOUT = 15
-    DEFAULT_MAXCONNECTS = 10
+    DEFAULT_MAX_CONCURRENCY = 10
     SGRAPH_API_BASE_URL = 'https://sgraph.umbrella.com'
 
     attr_reader :timeout
     attr_reader :sslcert
     attr_reader :sslcerttype
     attr_reader :sslcertpasswd
-    attr_reader :maxconnects
+    attr_reader :max_concurrency
 
     def initialize(params = { })
       raise UsageError, 'Missing certificate file' unless params[:sslcert]
       @sslcert = params[:sslcert]
       @timeout = DEFAULT_TIMEOUT
       @timeout = params[:timeout].to_f if params[:timeout]
-      @maxconnects = DEFAULT_MAXCONNECTS
-      @maxconnects = params[:maxconnects].to_i if params[:maxconnects]
+      @max_concurrency = DEFAULT_MAX_CONCURRENCY
+      @max_concurrency = params[:max_concurrency].to_i if params[:max_concurrency]
       @sslcerttype = params[:sslcerttype] || 'pem'
       @sslcertpasswd = params[:sslcertpasswd] || 'opendns'
       @options = {
@@ -44,11 +44,14 @@ module OpenDNS
         timeout: @timeout,
         sslcert: @sslcert,
         sslcerttype: @sslcerttype,
-        sslcertpasswd: @sslcertpasswd,
-        maxconnects: @maxconnects
+        sslcertpasswd: @sslcertpasswd
       }
     end
 
+    def query_multi
+      Typhoeus::Hydra.new(max_concurrency: @max_concurrency)
+    end
+    
     def query_handler(endpoint, method = :get, options = { })
       url = SGRAPH_API_BASE_URL + endpoint
       options = options.merge(@options)

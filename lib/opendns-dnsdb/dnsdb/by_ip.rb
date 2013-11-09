@@ -21,7 +21,7 @@ module OpenDNS
       def history_by_ip(ips, type)
         ips_is_array = ips.kind_of?(Enumerable)
         ips = [ ips ] unless ips_is_array
-        multi = Typhoeus::Hydra.hydra
+        multi = query_multi
         queries = { }
         ips.each do |ip|
           next if queries[ip]

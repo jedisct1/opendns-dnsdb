@@ -86,7 +86,7 @@ Supported options:
 * ``sslcert``: path to the SSL certificate
 * ``sslcerttype``: SSL certificate type, defaults to ``pem``.
 * ``sslcertpasswd``: SSL certificate password
-* ``maxconnects``: max number of parallel operations (default: 10)
+* ``max_concurrency``: max number of parallel operations (default: 10)
 
 Note on certificates format
 ===========================

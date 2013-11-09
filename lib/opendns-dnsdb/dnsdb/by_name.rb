@@ -21,7 +21,7 @@ module OpenDNS
       def history_by_name(names, type)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
-        multi = Typhoeus::Hydra.hydra
+        multi = query_multi
         queries = { }
         names.each do |name|
           next if queries[name]
