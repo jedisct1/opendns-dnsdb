@@ -46,6 +46,7 @@ module OpenDNS
         sslcerttype: @sslcerttype,
         sslcertpasswd: @sslcertpasswd
       }
+      Typhoeus::Config.memoize = TRUE
     end
 
     def query_multi
