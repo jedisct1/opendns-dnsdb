@@ -7,6 +7,7 @@ Gem::Specification.new do |gem|
   gem.description   = "Client library for the OpenDNS Security Graph"
   gem.summary       = gem.description
   gem.homepage      = "https://github.com/jedisct1/opendns-dnsdb-ruby"
+  gem.license       = "MIT"
   
   gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
   gem.files         = `git ls-files`.split("\n")
