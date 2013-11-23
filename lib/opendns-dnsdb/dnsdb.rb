@@ -8,6 +8,7 @@ require_relative 'dnsdb/response'
 require_relative 'dnsdb/by_ip'
 require_relative 'dnsdb/by_name'
 require_relative 'dnsdb/label'
+require_relative 'dnsdb/name'
 require_relative 'dnsdb/related'
 require_relative 'dnsdb/traffic'
 require_relative 'dnsdb/utils'
@@ -18,6 +19,7 @@ module OpenDNS
     include OpenDNS::DNSDB::ByIP
     include OpenDNS::DNSDB::ByName
     include OpenDNS::DNSDB::Label
+    include OpenDNS::DNSDB::Name    
     include OpenDNS::DNSDB::Related
     include OpenDNS::DNSDB::Traffic
     include OpenDNS::DNSDB::Utils    
