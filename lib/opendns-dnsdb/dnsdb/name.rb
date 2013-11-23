@@ -2,6 +2,11 @@
 module OpenDNS
   class DNSDB
     module Name
+      def distinct_names(names)
+        return [ names ] unless names.kind_of?(Hash)
+        Response::Distinct.new(names.values.flatten.uniq)
+      end     
+            
       def names_with_postfix(names)
         names_is_array = names.kind_of?(Enumerable)
         names = [ names ] unless names_is_array
@@ -24,6 +29,9 @@ module OpenDNS
         responses = responses.values.first unless names_is_array        
         responses        
       end
+    end
+    def distinct_names_with_postfix(names)
+      distinct_names(names_with_postfix(names))
     end
   end
 end
