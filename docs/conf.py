@@ -44,7 +44,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'OpenDNS DNS Database Client Library'
-copyright = u'2013, Frank Denis'
+copyright = u'2013-2014, Frank Denis'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
