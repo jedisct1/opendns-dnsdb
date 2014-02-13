@@ -9,6 +9,18 @@ OpenDNS public resolvers over a 90 days period.
 It also computes extra features based on these log files, suitable for
 building classifiers and reputation systems.
 
+Important: EOL for external researchers
+=======================================
+
+Access to the Security Graph API for researchers will be restricted to
+OpenDNS employees starting February 19th.
+
+Researchers with a client certificate can ask for an account for the
+public version of the Security Graph.
+
+The client library will remain available for reference, but the public
+version of the Security Graph API will not be supported.
+
 Documentation
 -------------
 
