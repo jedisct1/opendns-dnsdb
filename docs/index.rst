@@ -2,6 +2,18 @@
 OpenDNS Security Graph client
 =============================
 
+EOL for external researchers
+============================
+
+Access to the Security Graph API for researchers will be restricted to
+OpenDNS employees starting February 19th.
+
+Researchers with a client certificate can ask for an account for the
+public version of the Security Graph.
+
+The client library will remain available for reference, but the public
+version of the Security Graph API will not be supported.
+
 .. _installation:
 
 Installation
