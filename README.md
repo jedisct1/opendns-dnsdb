@@ -12,11 +12,8 @@ building classifiers and reputation systems.
 EOL for external researchers
 ============================
 
-Access to the Security Graph API for researchers is going to be
-restricted to OpenDNS employees.
-
-Researchers with a client certificate can ask for an account for the
-public version of the Security Graph.
+Access to the Security Graph API for researchers is now restricted to
+OpenDNS employees.
 
 The client library will remain available for reference, but the public
 version of the Security Graph API will not be supported.
