@@ -21,7 +21,7 @@ version of the Security Graph API will not be supported.
 Documentation
 -------------
 
-[Click here to read the full documentation of the Security Graph library](http://opendns-dnsdb-client-for-ruby.readthedocs.org/en/latest/).
+[Click here to read the full documentation of the Security Graph library](http://dnsdb-client.readthedocs.org/en/latest/).
 
 Example
 -------
