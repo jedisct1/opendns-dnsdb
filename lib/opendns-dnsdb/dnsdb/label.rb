@@ -6,6 +6,32 @@ module OpenDNS
     module Label
       CACHE_KEY = 'Umbrella/OpenDNS'      
 
+      def distinct_comments(comments)
+        return [ comments ] unless comments.kind_of?(Hash)
+        Response::Distinct.new(comments.values.flatten.uniq)
+      end
+
+      def comments_by_name(names)
+        names_is_array = names.kind_of?(Enumerable)
+        names = [ names ] unless names_is_array
+        multi = query_multi
+        names_json = MultiJson.dump(names)
+        cacheid = SipHash::digest(CACHE_KEY, names_json).to_s(16)
+        url = "/infected/names/#{cacheid}.json"
+        query = query_handler(url, :get, { body: names_json })
+        multi.queue(query)
+        multi.run
+        responses = MultiJson.load(query.response.body)
+        responses = responses['comments']
+        responses = Response::HashByName[responses]
+        responses = responses.values.first unless names_is_array
+        responses
+      end
+
+      def distinct_comments_by_name(names)
+        distinct_comments(comments_by_name(names))
+      end
+
       def distinct_labels(labels)
         return [ labels ] unless labels.kind_of?(Hash)
         Response::Distinct.new(labels.values.flatten.uniq)
