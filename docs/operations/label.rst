@@ -215,3 +215,18 @@ Returns a ``Response::Distinct``:
 
     ['github.com', 'excue.ru']
 
+Getting comments (attribution) about a set of names
+---------------------------------------------------
+
+Given a set of names, return a string summarizing all the comments
+(attribution) describing why each name was given a specific label:
+
+.. code-block:: ruby
+
+    db.comments_for_names(['trustsreaders.in', 'paybal.com'])
+
+Distinct comment strings can be retrieved with:
+
+.. code-block:: ruby
+
+    db.distinct_comments_for_names(['trustsreaders.in', 'paybal.com'])
