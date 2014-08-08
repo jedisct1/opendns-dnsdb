@@ -9,6 +9,12 @@ OpenDNS public resolvers over a 90 days period.
 It also computes extra features based on these log files, suitable for
 building classifiers and reputation systems.
 
+Documentation
+--------------
+
+The full documentation is available here:
+[OpenDNS DNSDB Client documentation](http://dnsdb-client.readthedocs.org/en/latest/)
+
 Example
 -------
 
